@@ -33,8 +33,6 @@ class User:
     def twitter_request(self, uri, verb='GET'):
         authorized_token = oauth2.Token(self.oauth_token, self.oauth_token_secret)
         authorized_client = oauth2.Client(consumer, authorized_token)
-
-        # Make Twitter API calls
         response, content = authorized_client.request(uri, verb)
         if response.status != 200:
             print("An error occurred when searching!")
