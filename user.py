@@ -36,6 +36,5 @@ class User:
         response, content = authorized_client.request(uri, verb)
         if response.status != 200:
             print("An error occurred when searching!")
-
         return json.loads(content.decode('utf-8'))
 
