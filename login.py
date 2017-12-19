@@ -8,8 +8,7 @@ user_email = input('Enter your e-mail address: ')
 
 user = User.load_from_db_by_email(user_email)
 
-# if user is none
-# none = false
+
 if not user:
     request_token = get_request_token()
 
@@ -24,7 +23,7 @@ if not user:
     user = User(user_email, first_name,last_name,access_token['oauth_token'],access_token['oauth_token_secret'], None)
     user.save_to_db()
 
-#convert byte to string
+
 tweets = user.twitter_request('https://api.twitter.com/1.1/search/tweets.json?q=computers+filter:images')
 
 for tweet in tweets['statuses']:
