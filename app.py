@@ -26,7 +26,6 @@ def twitter_login():
         return redirect(url_for('profile'))
     request_token = get_request_token()
     session['request_token'] = request_token
-
     return redirect(get_oauth_verifier_url(request_token))
 
 
@@ -48,7 +47,6 @@ def twitter_auth():
         user.save_to_db()
 
     session['screen_name'] = user.screen_name
-
     return redirect(url_for('profile'))
 
 
@@ -69,7 +67,6 @@ def search():
         json_response = r.json()
         label = json_response['label']
         tweet['label'] = label
-
     return render_template('search.html', content=tweet_texts)
 
 
